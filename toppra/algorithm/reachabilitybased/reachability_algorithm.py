@@ -246,15 +246,14 @@ class ReachabilityAlgorithm(ParameterizationAlgorithm):
 
         Returns
         -------
-        sdd_vec: (N,) array
-            Path accelerations. Double array. Will contain nan(s) if failed.
+        sdd_vec: (N,) ndarray
+            Path accelerations. Contain nan(s) or is None if failed.
         sd_vec: (N+1,) array
-            Path velocities. Double array. Will contain nan(s) if failed.
+            Path velocities. Contain nan(s) or is None if failed.
         v_vec: (N,) array or None
-            Auxiliary variables.
+            Auxiliary variables. Contain nan(s) or is None if failed.
         K: (N+1, 2) array
             Return the controllable set if `return_data` is True.
-
         """
         assert sd_end >= 0 and sd_start >= 0, "Path velocities must be positive"
         K = self.compute_controllable_sets(sd_end, sd_end)

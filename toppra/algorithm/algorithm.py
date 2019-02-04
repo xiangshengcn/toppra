@@ -92,8 +92,7 @@ class ParameterizationAlgorithm(object):
             Time-parameterized joint position trajectory. If unable to
             parameterize, return None.
         :class:`Interpolator`
-            Time-parameterized auxiliary variable trajectory. If
-            unable to parameterize or if there is no auxiliary
+            Time-parameterized auxiliary variable trajectory. If fail or there is no auxiliary
             variable, return None.
         profiles: tuple
             Return if return_profile is True, results from
@@ -102,8 +101,7 @@ class ParameterizationAlgorithm(object):
             Return if return_data is True.
 
         """
-        sdd_grid, sd_grid, v_grid, K = self.compute_parameterization(
-            sd_start, sd_end, return_data=True)
+        sdd_grid, sd_grid, v_grid, K = self.compute_parameterization(sd_start, sd_end, return_data=True)
 
         # fail condition: sd_grid is None, or there is nan in sd_grid
         if sd_grid is None or np.isnan(sd_grid).any():
